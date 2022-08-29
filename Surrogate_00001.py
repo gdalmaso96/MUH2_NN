@@ -150,7 +150,7 @@ if __name__ == '__main__':
     normalization.append(100) # 80 MeV/c
     nnodes = 20
     depth = 1
-    epochs = 10
+    epochs = 10000
     start_time = time.time()
     #DBtonumpy(studyname, database, objective, normalization)
     for i in range(10):
