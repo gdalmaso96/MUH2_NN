@@ -153,7 +153,7 @@ if __name__ == '__main__':
     epochs = 10
     start_time = time.time()
     #DBtonumpy(studyname, database, objective, normalization)
-    for i in range(1):
+    for i in range(10):
         train(studyname, database, objective, batchsize, normalization, nnodes, depth, epochs) # 1 layer
         print(time.time() - start_time)
         depth += 1
