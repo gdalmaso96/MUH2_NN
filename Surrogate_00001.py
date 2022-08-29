@@ -101,7 +101,7 @@ def train(studyname, database, objective, batchsize, normalization, nnodes, dept
     
     for i in range(len(normalization)):
         Y_pred = model.predict(X_train)
-        plt.plot(Y_pred[:, i], Y_train[:, i], '.', label=r'$\rho$ = %.3f' %(np.corrcoef(Y_pred[:, i], Y_train[:, i])[0][1]))
+        plt.plot(Y_pred[:, i], Y_train[:, i], '.', label=r'$\rho$ = %.6f' %(np.corrcoef(Y_pred[:, i], Y_train[:, i])[0][1]))
         if(objective[i] == 0):
             plt.plot([0, 0.2], [0, 0.2], '--', color = 'r')
         else:
@@ -122,7 +122,7 @@ def train(studyname, database, objective, batchsize, normalization, nnodes, dept
         # Create test plot
         Y_pred = model.predict(X_test)
         
-        plt.plot(Y_pred[:, i], Y_test[:, i], '.', label=r'$\rho$ = %.3f' %(np.corrcoef(Y_pred[:, i], Y_test[:, i])[0][1]))
+        plt.plot(Y_pred[:, i], Y_test[:, i], '.', label=r'$\rho$ = %.6f' %(np.corrcoef(Y_pred[:, i], Y_test[:, i])[0][1]))
         if(objective[i] == 0):
             plt.plot([0, 0.2], [0, 0.2], '--', color = 'r')
         else:
