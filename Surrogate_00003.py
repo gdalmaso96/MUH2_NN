@@ -140,7 +140,7 @@ def train(studyname, database, objective, batchsize, normalization, nnodes, dept
         
         corr.append(np.corrcoef(Y_pred[:, i], Y_test[:, i])[0][1])
     
-    np.save('corr/' + studyname + '_%03dneurons_%03dlayers_%04depochs_obj%d_%dbatch_test.npy' %(nnodes, depth, epochs, len(objective), batchsize)), corr)
+    np.save('corr/' + studyname + '_%03dneurons_%03dlayers_%04depochs_obj%d_%dbatch_test.npy' %(nnodes, depth, epochs, len(objective), batchsize), corr)
 
     
     return results
