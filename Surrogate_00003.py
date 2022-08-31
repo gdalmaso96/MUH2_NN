@@ -171,7 +171,7 @@ if __name__ == '__main__':
     start_time = time.time()
     #DBtonumpy(studyname, database, objective, normalization)
     for i in range(20):
-            for k in range(10):
+        for k in range(10):
             depth = depth_s + i
             nnodes = nnodes_s
             batchsize = batchsize_s + k*100
