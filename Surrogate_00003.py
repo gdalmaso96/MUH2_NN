@@ -156,14 +156,6 @@ def trainKfold(studyname, database, objective, batchsize, normalization, nnodes,
     X = np.load('X.npy')
     Y = np.load('Y.npy')
     
-    # Prepare target
-    Y_tgt = []
-    
-    for o in objective:
-        Y_tgt.append(Y[:, o])
-    
-    Y = np.array(Y_tgt)
-    
     # Create KFold
     kfold = KFold(n_splits=num_folds, shuffle=True)
     
@@ -171,6 +163,18 @@ def trainKfold(studyname, database, objective, batchsize, normalization, nnodes,
     no_fold = 1
     loss_per_fold = []
     for train, test in kfold.split(X, Y):
+        Y_tgt = []
+        Y_tst = []
+    
+        for o in objective:
+            Y_tgt.append(Y[train, o])
+            Y_tst.append(Y[test, o])
+                
+        X_tgt = X[train]
+        Y_tgt = np.array(Y_tgt)
+        X_tst = X[test]
+        Y_tst = np.array(Y_tst)
+        
         # Create model
         model = Sequential()
         model.add(Dense(nnodes, input_shape=(len(list(X[0])), ), activation='tanh'))
@@ -184,14 +188,14 @@ def trainKfold(studyname, database, objective, batchsize, normalization, nnodes,
         # Generate a print
         print('------------------------------------------------------------------------')
         print(f'Training for fold {fold_no} ...')
-        history = model.fit(X[train], Y[train],
+        history = model.fit(X_tgt, Y_tgt,
               batch_size=batchsize,
               epochs=epochs,
               verbose=verbosity)
     
     
         # Generate generalization metrics
-        scores = model.evaluate(X[test], Y[test], verbose=0)
+        scores = model.evaluate(X_tst, Y_tst, verbose=0)
         loss_per_fold.append(scores[0])
 
         # Increase fold number
