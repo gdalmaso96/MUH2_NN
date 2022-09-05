@@ -221,7 +221,7 @@ def trainKfold(studyname, database, objective, batchsize, normalization, nnodes,
         plt.savefig('fig/' + studyname + '_%03dneurons_%03dlayers_%04depochs_%dobj%d_%dbatch_%dfold%d_test.png' %(nnodes, depth, epochs, objective[i], len(objective), batchsize, np.argmin(np.array(loss_per_fold)), num_folds))
         plt.clf()
         
-        corr.append(np.corrcoef(Y_pred[:, i], Y[:, objective[i]])[0][1])
+        #corr.append(np.corrcoef(Y_pred[:, i], Y[:, objective[i]])[0][1])
     
     
     
