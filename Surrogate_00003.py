@@ -186,7 +186,7 @@ def trainKfold(studyname, database, objective, batchsize, normalization, nnodes,
         loss_per_fold.append(scores)
 
         # Increase fold number
-        model.save(studyname + '_%03dneurons_%03dlayers_%04depochs_obj%d_%dbatch_%dfold_save' %(nnodes, depth, epochs, len(objective), batchsize, fold_no))
+        model.save(studyname + '_%03dneurons_%03dlayers_%04depochs_obj%d_%dbatch_%dfold%d_save' %(nnodes, depth, epochs, len(objective), batchsize, fold_no, num_folds))
         fold_no = fold_no + 1
         
         
@@ -202,12 +202,12 @@ def trainKfold(studyname, database, objective, batchsize, normalization, nnodes,
     print('------------------------------------------------------------------------')
     
     # Load best modelnumpy.argmin
-    model = load_model(studyname + '_%03dneurons_%03dlayers_%04depochs_obj%d_%dbatch_%dfold_save' %(nnodes, depth, epochs, len(objective), batchsize, np.argmin(np.array(loss_per_fold))))
+    model = load_model(studyname + '_%03dneurons_%03dlayers_%04depochs_obj%d_%dbatch_%dfold%d_save' %(nnodes, depth, epochs, len(objective), batchsize, np.argmin(np.array(loss_per_fold)), num_folds))
     
     
     for i in range(len(objective)):
         Y_pred = model.predict(X)
-        plt.plot(Y_pred[:, i], Y[:, i], '.', label=r'$\rho$ = %.6f' %(np.corrcoef(Y_pred[:, i], Y[:, i])[0][1]))
+        plt.plot(Y_pred[:, i], Y[:, objective[i]], '.', label=r'$\rho$ = %.6f' %(np.corrcoef(Y_pred[:, i], Y[:, objective[i]])[0][1]))
         if(objective[i] == 0):
             plt.plot([0, 0.2], [0, 0.2], '--', color = 'r')
         else:
@@ -218,10 +218,10 @@ def trainKfold(studyname, database, objective, batchsize, normalization, nnodes,
         plt.xlabel('Prediction')
         plt.legend(loc='upper left')
         #plt.show()
-        plt.savefig('fig/' + studyname + '_%03dneurons_%03dlayers_%04depochs_%dobj%d_%dbatch_%dfold_test.png' %(nnodes, depth, epochs, objective[i], len(objective), batchsize, np.argmin(np.array(loss_per_fold))))
+        plt.savefig('fig/' + studyname + '_%03dneurons_%03dlayers_%04depochs_%dobj%d_%dbatch_%dfold%d_test.png' %(nnodes, depth, epochs, objective[i], len(objective), batchsize, np.argmin(np.array(loss_per_fold)), num_folds))
         plt.clf()
         
-        corr.append(np.corrcoef(Y_pred[:, i], Y[:, i])[0][1])
+        corr.append(np.corrcoef(Y_pred[:, i], Y[:, objective[i]])[0][1])
     
     
     
