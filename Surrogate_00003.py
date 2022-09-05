@@ -176,13 +176,13 @@ def trainKfold(studyname, database, objective, batchsize, normalization, nnodes,
         # Generate a print
         print('------------------------------------------------------------------------')
         print(f'Training for fold {fold_no} ...')
-        history = model.fit(X[train, objective], Y[train, objective],
+        history = model.fit(X[train], Y[train, objective],
               batch_size=batchsize,
               epochs=epochs)
     
     
         # Generate generalization metrics
-        scores = model.evaluate(X[test, objective], Y[test, objective],)
+        scores = model.evaluate(X[test], Y[test, objective],)
         loss_per_fold.append(scores[0])
 
         # Increase fold number
