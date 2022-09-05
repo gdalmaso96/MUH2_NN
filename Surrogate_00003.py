@@ -160,7 +160,7 @@ def trainKfold(studyname, database, objective, batchsize, normalization, nnodes,
     kfold = KFold(n_splits=num_folds, shuffle=True)
     
     # Train
-    no_fold = 1
+    fold_no = 1
     loss_per_fold = []
     for train, test in kfold.split(X, Y):
         Y_tgt = []
