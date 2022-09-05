@@ -183,7 +183,7 @@ def trainKfold(studyname, database, objective, batchsize, normalization, nnodes,
     
         # Generate generalization metrics
         scores = model.evaluate(X[test], Y[test, objective],)
-        loss_per_fold.append(scores[0])
+        loss_per_fold.append(scores)
 
         # Increase fold number
         model.save(studyname + '_%03dneurons_%03dlayers_%04depochs_obj%d_%dbatch_%dfold_save' %(nnodes, depth, epochs, len(objective), batchsize, fold_no))
