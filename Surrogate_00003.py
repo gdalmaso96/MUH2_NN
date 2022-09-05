@@ -190,8 +190,7 @@ def trainKfold(studyname, database, objective, batchsize, normalization, nnodes,
         print(f'Training for fold {fold_no} ...')
         history = model.fit(X_tgt, Y_tgt,
               batch_size=batchsize,
-              epochs=epochs,
-              verbose=verbosity)
+              epochs=epochs)
     
     
         # Generate generalization metrics
