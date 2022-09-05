@@ -163,18 +163,6 @@ def trainKfold(studyname, database, objective, batchsize, normalization, nnodes,
     fold_no = 1
     loss_per_fold = []
     for train, test in kfold.split(X, Y):
-        Y_tgt = []
-        Y_tst = []
-    
-        for o in objective:
-            Y_tgt.append(Y[train, o])
-            Y_tst.append(Y[test, o])
-                
-        X_tgt = X[train]
-        Y_tgt = np.array(Y_tgt)
-        X_tst = X[test]
-        Y_tst = np.array(Y_tst)
-        
         # Create model
         model = Sequential()
         model.add(Dense(nnodes, input_shape=(len(list(X[0])), ), activation='tanh'))
@@ -188,13 +176,13 @@ def trainKfold(studyname, database, objective, batchsize, normalization, nnodes,
         # Generate a print
         print('------------------------------------------------------------------------')
         print(f'Training for fold {fold_no} ...')
-        history = model.fit(X_tgt, Y_tgt,
+        history = model.fit(X[train, objective], Y[train, objective],
               batch_size=batchsize,
               epochs=epochs)
     
     
         # Generate generalization metrics
-        scores = model.evaluate(X_tst, Y_tst, verbose=0)
+        scores = model.evaluate(X[test, objective], Y[test, objective],)
         loss_per_fold.append(scores[0])
 
         # Increase fold number
