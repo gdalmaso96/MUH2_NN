@@ -229,8 +229,9 @@ def trainKfold(studyname, database, objective, batchsize, normalization, nnodes,
     
 
 # Test with 10 epochs on 10 folds 50 batch
-
+# Now batchsize is parameter
 if __name__ == '__main__':
+    args = sys.argv[1:]
     studyname = 'MUH2_V5_Peter_TOT_mup_mono'
     database = 'sqlite:///' + studyname + '.db'
     objective = []
@@ -242,6 +243,8 @@ if __name__ == '__main__':
     objective.append(4)
     '''
     batchsize_s = 50
+    if(len(args) > 1):
+        batchsize_s = int(args[0])
     normalization = []
     normalization.append((2922072/2e11*2.4e-3/1.6e-19)*0.2) # 20% of total muons
     '''
