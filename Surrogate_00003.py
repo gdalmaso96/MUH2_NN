@@ -6,14 +6,12 @@ from matplotlib import pyplot as plt
 from tensorflow.keras.models import Sequential
 from tensorflow.keras.layers import Dense
 from tensorflow.keras.optimizers import Adam
-from tensorflow.keras.utils import set_random_seed
 from tensorflow.keras.models import load_model
 from sklearn.model_selection import KFold
 from multiprocessing.pool import ThreadPool
 import subprocess
 
 np.random.seed(299792458)
-set_random_seed(299792458)
 
 # Added kfold cross validation for training and testing
 
