@@ -23,7 +23,7 @@ batchsize.append(500)
 
 commands = []
 for b in batchsize:
-	commands.append("python3 /meg/home/dalmaso_g/Surrogates/MUH2_NN/Surrogate000003.py %d" %(b))
+	commands.append("python3 /meg/home/dalmaso_g/Surrogates/MUH2_NN/Surrogate000003.py %d\n" %(b))
 
 for i in range(len(commands)):
 	run = i+offset
