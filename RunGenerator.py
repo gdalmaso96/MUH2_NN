@@ -31,10 +31,10 @@ for i in range(len(commands)):
 	jobs.write("sbatch /meg/home/dalmaso_g/Surrogates/MUH2_NN/slurm/surrogate00003_%07i.sl\n" %run)
 	
 	slurm_file.write("#!/bin/bash\n")
-	slurm_file.write("#SBATCH --cluster=merlin6 \n")
-	slurm_file.write("#SBATCH --partition=hourly \n")
+	slurm_file.write("#SBATCH -p all\n")
 	slurm_file.write("#SBATCH -o /meg/home/dalmaso_g/Surrogates/MUH2_NN/OUT/surrogate00003_%07i.out \n" %run)
 	slurm_file.write("#SBATCH -e /meg/home/dalmaso_g/Surrogates/MUH2_NN/OUT/surrogate00003_%07i.err \n\n" %run)
+	slurm_file.write("#SBATCH --time 3-00:00:00\n")
 	slurm_file.write("ulimit -c 0\n")
 	slurm_file.write("echo Running on: `hostname` \n")
 	slurm_file.write("TIMESTART=`date`\n")
