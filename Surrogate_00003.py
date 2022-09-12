@@ -242,7 +242,7 @@ if __name__ == '__main__':
     objective.append(4)
     '''
     batchsize_s = 50
-    if(len(args) > 1):
+    if(len(args) > 0):
         batchsize_s = int(args[0])
     normalization = []
     normalization.append((2922072/2e11*2.4e-3/1.6e-19)*0.2) # 20% of total muons
