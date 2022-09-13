@@ -263,7 +263,7 @@ if __name__ == '__main__':
     '''
     nnodes_s = 20
     depth_s = 1
-    epochs = 1
+    epochs = 10000
     start_time = time.time()
     #DBtonumpy(studyname, database, objective, normalization)
     num_folds = 10
