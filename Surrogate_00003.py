@@ -180,12 +180,11 @@ def trainKfold(studyname, database, objective, batchsize, normalization, nnodes,
               epochs=epochs)
     
         plt.plot(history.history['loss'])
-        plt.plot(history.history['val_loss'])
         plt.title('model loss')
         plt.yscale('log')
         plt.ylabel('loss')
         plt.xlabel('epoch')
-        plt.legend(['train', 'val'], loc='upper left')
+        plt.legend(['train'], loc='upper left')
         #plt.show()
         #plt.savefig('fig/' + studyname + '_%03dneurons_%03dlayers_%04depochstrain_loss.png' %(nnodes, depth, epochs))
         plt.savefig('fig/' + studyname + '_%03dneurons_%03dlayers_%04depochs_obj%d_%dbatch_%dfold%d_loss.png' %(nnodes, depth, epochs, len(objective), batchsize, fold_no, num_folds))
@@ -264,7 +263,7 @@ if __name__ == '__main__':
     '''
     nnodes_s = 20
     depth_s = 1
-    epochs = 10000
+    epochs = 1
     start_time = time.time()
     #DBtonumpy(studyname, database, objective, normalization)
     num_folds = 10
