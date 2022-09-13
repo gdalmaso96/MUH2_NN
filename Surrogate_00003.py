@@ -185,7 +185,8 @@ def trainKfold(studyname, database, objective, batchsize, normalization, nnodes,
         plt.ylabel('loss')
         plt.xlabel('epoch')
         plt.legend(['train'], loc='upper left')
-        #plt.show()
+        plt.ylim(1e-5, 1e-1);
+	#plt.show()
         #plt.savefig('fig/' + studyname + '_%03dneurons_%03dlayers_%04depochstrain_loss.png' %(nnodes, depth, epochs))
         plt.savefig('fig/' + studyname + '_%03dneurons_%03dlayers_%04depochs_obj%d_%dbatch_%dfold%d_loss.png' %(nnodes, depth, epochs, len(objective), batchsize, fold_no, num_folds))
         plt.clf()    
