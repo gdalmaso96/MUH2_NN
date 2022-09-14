@@ -21,9 +21,14 @@ batchsize.append(400)
 batchsize.append(450)
 batchsize.append(500)
 
+num_folds = []
+num_folds.append(10)
+num_folds.append(5)
+
 commands = []
 for b in batchsize:
-	commands.append("python3 /meg/home/dalmaso_g/Surrogates/MUH2_NN/Surrogate_00003.py %d\n" %(b))
+	for f in num_folds:
+		commands.append("python3 /meg/home/dalmaso_g/Surrogates/MUH2_NN/Surrogate_00003.py %d %d\n" %(b, f))
 
 for i in range(len(commands)):
 	run = i+offset

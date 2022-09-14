@@ -252,8 +252,11 @@ if __name__ == '__main__':
     objective.append(4)
     '''
     batchsize_s = 50
+    num_folds = 10
     if(len(args) > 0):
         batchsize_s = int(args[0])
+    if(len(args) > 1):
+        num_folds = int(args[1])
     normalization = []
     normalization.append((2922072/2e11*2.4e-3/1.6e-19)*0.2) # 20% of total muons
     '''
@@ -267,7 +270,6 @@ if __name__ == '__main__':
     epochs = 10000
     start_time = time.time()
     #DBtonumpy(studyname, database, objective, normalization)
-    num_folds = 10
     for i in range(3, 4): # iterate on NN depth
         for k in range(0, 1): # iterate on batch size
             depth = depth_s + i
