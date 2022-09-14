@@ -31,8 +31,8 @@ num_folds.append(10)
 num_folds.append(5)
 
 commands = []
-for b in batchsize:
-	for f in num_folds:
+for f in num_folds:
+	for b in batchsize:
 		commands.append("python3 /meg/home/dalmaso_g/Surrogates/MUH2_NN/Surrogate_00003.py %d %d\n" %(b, f))
 
 for i in range(len(commands)):
