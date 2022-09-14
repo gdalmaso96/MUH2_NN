@@ -20,6 +20,11 @@ batchsize.append(350)
 batchsize.append(400)
 batchsize.append(450)
 batchsize.append(500)
+batchsize.append(600)
+batchsize.append(700)
+batchsize.append(800)
+batchsize.append(900)
+batchsize.append(1000)
 
 num_folds = []
 num_folds.append(10)
