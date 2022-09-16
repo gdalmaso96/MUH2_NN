@@ -5,7 +5,7 @@ Created on Mon Oct 16 14:16:34 2017
 @author: schwendimann_p
 """
 
-offset = 0
+offset = 30
 
 jobs = open("joblist.txt", "w")
 
@@ -28,7 +28,7 @@ batchsize.append(1000)
 
 num_folds = []
 num_folds.append(10)
-num_folds.append(5)
+#num_folds.append(5)
 
 commands = []
 for f in num_folds:

@@ -245,12 +245,11 @@ if __name__ == '__main__':
     database = 'sqlite:///' + studyname + '.db'
     objective = []
     objective.append(0)
-    '''
     objective.append(1)
     objective.append(2)
-    objective.append(3)
+    #objective.append(3)
     objective.append(4)
-    '''
+    
     batchsize_s = 50
     num_folds = 10
     if(len(args) > 0):
