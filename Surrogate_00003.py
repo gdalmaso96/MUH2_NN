@@ -171,6 +171,10 @@ def trainKfold(studyname, database, objective, batchsize, normalization, nnodes,
         model.add(Dense(len(objective)))
         optimiser = Adam(lr=0.001, beta_1=0.9, beta_2=0.999)
         model.compile(optimizer=optimiser, loss='mse')
+                
+        print(Y.shape)
+        print(train.shape)
+        print(objective.shape)
         
         # Generate a print
         print('------------------------------------------------------------------------')
@@ -249,6 +253,8 @@ if __name__ == '__main__':
     #objective.append(2)
     #objective.append(3)
     #objective.append(4)
+    
+    objective = np.array(objective)
     
     batchsize_s = 50
     num_folds = 10
