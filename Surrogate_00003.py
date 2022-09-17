@@ -253,6 +253,8 @@ if __name__ == '__main__':
     #objective.append(3)
     objective.append(4)
     
+    objective = np.array(objective)
+    
     batchsize_s = 50
     num_folds = 10
     if(len(args) > 0):
