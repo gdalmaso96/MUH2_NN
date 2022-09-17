@@ -178,7 +178,7 @@ def trainKfold(studyname, database, objective, batchsize, normalization, nnodes,
         print(train.shape)
         print('------------------------------------------------------------------------')
         print(f'Training for fold {fold_no} ...')
-        history = model.fit(X[train], Y[train, objective[np.newaxis,:]],
+        history = model.fit(X[train], Y[train, objective[:, np.newaxis]],
               batch_size=batchsize,
               epochs=epochs)
     
