@@ -194,7 +194,7 @@ def trainKfold(studyname, database, objective, batchsize, normalization, nnodes,
         plt.savefig('fig/' + studyname + '_%03dneurons_%03dlayers_%04depochs_obj%d_%dbatch_%dfold%d_loss.png' %(nnodes, depth, epochs, len(objective), batchsize, fold_no, num_folds))
         plt.clf()    
         # Generate generalization metrics
-        scores = model.evaluate(X[test], Y[test, objective],)
+        scores = model.evaluate(X[test], Y[test, objective[np.newaxis,:]],)
         loss_per_fold.append(scores)
 
         # Increase fold number
