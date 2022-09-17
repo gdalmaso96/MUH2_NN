@@ -250,8 +250,8 @@ if __name__ == '__main__':
     objective = []
     objective.append(0)
     objective.append(1)
-    #objective.append(2)
-    #objective.append(3)
+    objective.append(2)
+    objective.append(3)
     #objective.append(4)
     
     objective = np.array(objective)
