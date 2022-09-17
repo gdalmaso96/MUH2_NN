@@ -173,6 +173,9 @@ def trainKfold(studyname, database, objective, batchsize, normalization, nnodes,
         model.compile(optimizer=optimiser, loss='mse')
         
         # Generate a print
+        print(Y.size())
+        print(objective.size())
+        print(train.size())
         print('------------------------------------------------------------------------')
         print(f'Training for fold {fold_no} ...')
         history = model.fit(X[train], Y[train, objective],
