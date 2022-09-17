@@ -173,12 +173,9 @@ def trainKfold(studyname, database, objective, batchsize, normalization, nnodes,
         model.compile(optimizer=optimiser, loss='mse')
         
         # Generate a print
-        print(Y.shape)
-        print(objective.shape)
-        print(train.shape)
         print('------------------------------------------------------------------------')
         print(f'Training for fold {fold_no} ...')
-        history = model.fit(X[train], Y[train, objective[:, np.newaxis]],
+        history = model.fit(X[train], Y[train, objective],
               batch_size=batchsize,
               epochs=epochs)
     
@@ -248,12 +245,10 @@ if __name__ == '__main__':
     database = 'sqlite:///' + studyname + '.db'
     objective = []
     objective.append(0)
-    objective.append(1)
-    objective.append(2)
+    #objective.append(1)
+    #objective.append(2)
     #objective.append(3)
-    objective.append(4)
-    
-    objective = np.array(objective)
+    #objective.append(4)
     
     batchsize_s = 50
     num_folds = 10
