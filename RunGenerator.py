@@ -33,10 +33,19 @@ num_folds = []
 num_folds.append(10)
 #num_folds.append(5)
 
+depth = []
+depth.append(5)
+depth.append(6)
+depth.append(7)
+depth.append(8)
+depth.append(9)
+depth.append(10)
+
 commands = []
 for f in num_folds:
 	for b in batchsize:
-		commands.append("python3 /meg/home/dalmaso_g/Surrogates/MUH2_NN/Surrogate_00003.py %d %d\n" %(b, f))
+		for n in depth:
+			commands.append("python3 /meg/home/dalmaso_g/Surrogates/MUH2_NN/Surrogate_00003.py %d %d %d\n" %(b, f, n))
 
 for i in range(len(commands)):
 	run = i+offset

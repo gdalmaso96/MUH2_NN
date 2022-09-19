@@ -262,6 +262,8 @@ if __name__ == '__main__':
         batchsize_s = int(args[0])
     if(len(args) > 1):
         num_folds = int(args[1])
+    if(len(args) > 2):
+    	depth_s = int(args[2])
     normalization = []
     normalization.append((2922072/2e11*2.4e-3/1.6e-19)*0.2) # 20% of total muons
     '''
@@ -271,11 +273,10 @@ if __name__ == '__main__':
     normalization.append(100) # 100 %
     '''
     nnodes_s = 20
-    depth_s = 1
     epochs = 10000
     start_time = time.time()
     #DBtonumpy(studyname, database, objective, normalization)
-    for i in range(3, 10): # iterate on NN depth
+    for i in range(0, 1): # iterate on NN depth
         for k in range(0, 1): # iterate on batch size
             depth = depth_s + i
             nnodes = nnodes_s
