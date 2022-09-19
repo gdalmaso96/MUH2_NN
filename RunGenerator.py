@@ -5,11 +5,12 @@ Created on Mon Oct 16 14:16:34 2017
 @author: schwendimann_p
 """
 
-offset = 30
+offset = 45
 
 jobs = open("joblist.txt", "w")
 
 batchsize = []
+'''
 batchsize.append(50)
 batchsize.append(100)
 batchsize.append(150)
@@ -19,13 +20,15 @@ batchsize.append(300)
 batchsize.append(350)
 batchsize.append(400)
 batchsize.append(450)
+'''
 batchsize.append(500)
+'''
 batchsize.append(600)
 batchsize.append(700)
 batchsize.append(800)
 batchsize.append(900)
 batchsize.append(1000)
-
+'''
 num_folds = []
 num_folds.append(10)
 #num_folds.append(5)

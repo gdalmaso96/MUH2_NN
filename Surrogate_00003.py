@@ -275,7 +275,7 @@ if __name__ == '__main__':
     epochs = 10000
     start_time = time.time()
     #DBtonumpy(studyname, database, objective, normalization)
-    for i in range(3, 4): # iterate on NN depth
+    for i in range(3, 10): # iterate on NN depth
         for k in range(0, 1): # iterate on batch size
             depth = depth_s + i
             nnodes = nnodes_s
