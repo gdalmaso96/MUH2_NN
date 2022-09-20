@@ -254,8 +254,6 @@ if __name__ == '__main__':
     objective.append(3)
     #objective.append(4)
     
-    objective = np.array(objective)
-    
     batchsize_s = 50
     num_folds = 10
     if(len(args) > 0):
@@ -267,6 +265,7 @@ if __name__ == '__main__':
     if(len(args) > 3):
         objective = []
         objective.append(int(args[3]))
+    objective = np.array(objective)
 
     normalization = []
     normalization.append((2922072/2e11*2.4e-3/1.6e-19)*0.2) # 20% of total muons
