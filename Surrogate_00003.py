@@ -192,14 +192,20 @@ def trainKfold(studyname, database, objective, batchsize, normalization, nnodes,
         plt.ylim(1e-5, 1e-1);
 	#plt.show()
         #plt.savefig('fig/' + studyname + '_%03dneurons_%03dlayers_%04depochstrain_loss.png' %(nnodes, depth, epochs))
-        plt.savefig('fig/' + studyname + '_%03dneurons_%03dlayers_%04depochs_obj%d_%dbatch_%dfold%d_loss.png' %(nnodes, depth, epochs, len(objective), batchsize, fold_no, num_folds))
+        if(len(objective) == 1):
+            plt.savefig('fig/' + studyname + '_%03dneurons_%03dlayers_%04depochs_%dobj%d_%dbatch_%dfold%d_loss.png' %(nnodes, depth, epochs, objective[0], len(objective), batchsize, fold_no, num_folds))
+        else:
+            plt.savefig('fig/' + studyname + '_%03dneurons_%03dlayers_%04depochs_obj%d_%dbatch_%dfold%d_loss.png' %(nnodes, depth, epochs, len(objective), batchsize, fold_no, num_folds))
         plt.clf()    
         # Generate generalization metrics
         scores = model.evaluate(X[test], (Y[test, :])[:, objective],)
         loss_per_fold.append(scores)
 
         # Increase fold number
-        model.save(studyname + '_%03dneurons_%03dlayers_%04depochs_obj%d_%dbatch_%dfold%d_save' %(nnodes, depth, epochs, len(objective), batchsize, fold_no, num_folds))
+        if(len(objective) == 1):
+            model.save(studyname + '_%03dneurons_%03dlayers_%04depochs_%dobj%d_%dbatch_%dfold%d_save' %(nnodes, depth, epochs, objective[0], len(objective), batchsize, fold_no, num_folds))
+        else:
+            model.save(studyname + '_%03dneurons_%03dlayers_%04depochs_obj%d_%dbatch_%dfold%d_save' %(nnodes, depth, epochs, len(objective), batchsize, fold_no, num_folds))
         fold_no = fold_no + 1
         
         
@@ -215,7 +221,10 @@ def trainKfold(studyname, database, objective, batchsize, normalization, nnodes,
     print('------------------------------------------------------------------------')
     
     # Load best modelnumpy.argmin
-    model = load_model(studyname + '_%03dneurons_%03dlayers_%04depochs_obj%d_%dbatch_%dfold%d_save' %(nnodes, depth, epochs, len(objective), batchsize, np.argmin(np.array(loss_per_fold)), num_folds))
+    if(len(objective) == 1):
+        model = load_model(studyname + '_%03dneurons_%03dlayers_%04depochs_%dobj%d_%dbatch_%dfold%d_save' %(nnodes, depth, epochs, objective[0], len(objective), batchsize, np.argmin(np.array(loss_per_fold)), num_folds))
+    else:
+        model = load_model(studyname + '_%03dneurons_%03dlayers_%04depochs_obj%d_%dbatch_%dfold%d_save' %(nnodes, depth, epochs, len(objective), batchsize, np.argmin(np.array(loss_per_fold)), num_folds))
     
     
     for i in range(len(objective)):
