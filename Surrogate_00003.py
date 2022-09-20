@@ -264,6 +264,10 @@ if __name__ == '__main__':
         num_folds = int(args[1])
     if(len(args) > 2):
     	depth_s = int(args[2])
+    if(len(args) > 3):
+    	objective = []
+	objective.append(int(args[3]))
+
     normalization = []
     normalization.append((2922072/2e11*2.4e-3/1.6e-19)*0.2) # 20% of total muons
     '''

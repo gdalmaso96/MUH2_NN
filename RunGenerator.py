@@ -5,7 +5,7 @@ Created on Mon Oct 16 14:16:34 2017
 @author: schwendimann_p
 """
 
-offset = 45
+offset = 51
 
 jobs = open("joblist.txt", "w")
 
@@ -34,18 +34,26 @@ num_folds.append(10)
 #num_folds.append(5)
 
 depth = []
-depth.append(5)
-depth.append(6)
-depth.append(7)
-depth.append(8)
-depth.append(9)
-depth.append(10)
+depth.append(4)
+#depth.append(5)
+#depth.append(6)
+#depth.append(7)
+#depth.append(8)
+#depth.append(9)
+#depth.append(10)
+
+objective = []
+#objective.append(0)
+objective.append(1)
+objective.append(2)
+objective.append(3)
 
 commands = []
 for f in num_folds:
 	for b in batchsize:
 		for n in depth:
-			commands.append("python3 /meg/home/dalmaso_g/Surrogates/MUH2_NN/Surrogate_00003.py %d %d %d\n" %(b, f, n))
+			for o in objective:
+				commands.append("python3 /meg/home/dalmaso_g/Surrogates/MUH2_NN/Surrogate_00003.py %d %d %d %d\n" %(b, f, n, o))
 
 for i in range(len(commands)):
 	run = i+offset
